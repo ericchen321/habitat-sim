@@ -36,7 +36,7 @@ if [[ $my_hostname =~ "fair" ]]; then
   module load cmake/3.10.1/gcc.5.4.0
 fi
 
-python setup.py build_ext --inplace "${builder_args[@]}"
+python setup.py build_ext --parallel 4 --inplace "${builder_args[@]}"
 
 if [ "$RUN_TESTS" = true ] ; then
   cd build
