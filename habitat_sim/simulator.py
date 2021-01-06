@@ -296,8 +296,21 @@ class Simulator(SimulatorBackend):
         self.close()
 
     def step_physics(self, dt, scene_id=0):
-        self.step_world(dt)
+        self._num_total_frames += 1
 
+        # TODO: detect collision after action
+        collided = self.contact_test(object_id=0)
+
+        # step physics by dt
+        step_start_Time = time.time()
+        self.step_world(dt)
+        _previous_step_time = time.time() - step_start_Time
+
+        observations = self.get_sensor_observations()
+        # Whether or not the action taken resulted in a collision
+        observations["collided"] = collided
+
+        return observations
 
 class Sensor:
     r"""Wrapper around habitat_sim.Sensor
