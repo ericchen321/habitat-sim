@@ -14,6 +14,7 @@ if not getattr(builtins, "__HSIM_SETUP__", False):
     from habitat_sim.nav import *
     from habitat_sim.agent import *
     from habitat_sim.simulator import *
+    from habitat_sim.physics_simulator import *
     from habitat_sim.bindings import *
 
     from habitat_sim import (
@@ -28,6 +29,7 @@ if not getattr(builtins, "__HSIM_SETUP__", False):
         sensor,
         sim,
         simulator,
+        physics_simulator,
         utils,
     )
     from habitat_sim._ext.habitat_sim_bindings import MapStringString
@@ -48,6 +50,7 @@ if not getattr(builtins, "__HSIM_SETUP__", False):
         "sensor",
         "sim",
         "simulator",
+        "physics_simulator",
         "utils",
         "MapStringString",
         "registry",
